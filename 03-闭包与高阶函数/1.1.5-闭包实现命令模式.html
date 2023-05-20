@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <button id="execute">点击我执行命令</button>
+    <button id="undo">点击我执行命令</button>
+
+    <script>
+      var Tv = {
+        open: function () {
+          console.log("打开电视");
+        },
+        close: function () {
+          console.log("关闭电视");
+        },
+      };
+
+      var createCommand = function (receiver) {
+        // 利用闭包，把命令的接收者保存在闭包的环境中
+        var execute = function () {
+          return receiver.open();
+        };
+
+        var undo = function () {
+          return receiver.close();
+        };
+
+        return {
+          execute,
+          undo,
+        };
+      };
+
+      var setCommand = function (commandInstance) {
+        document.getElementById("execute").onclick = function () {
+          commandInstance.execute();
+        };
+        document.getElementById("undo").onclick = function () {
+          commandInstance.undo();
+        };
+      };
+
+      setCommand(createCommand(Tv));
+    </script>
+  </body>
+</html>

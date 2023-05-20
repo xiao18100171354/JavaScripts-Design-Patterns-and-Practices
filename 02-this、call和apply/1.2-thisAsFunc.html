@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div id="div1">我是一个div</div>
+
+    <script>
+      window.id = "window";
+
+      // 事件函数内部的this指向绑定事件的节点
+      document.getElementById("div1").onclick = function () {
+        alert(this.id); // div1
+        let _this = this; // 可以选择通过一个变量保存当前环境的this的引用
+        var callback = function () {
+          alert(this.id); // window
+          alert(_this.id); // div1
+        };
+        callback();
+      };
+    </script>
+  </body>
+</html>
