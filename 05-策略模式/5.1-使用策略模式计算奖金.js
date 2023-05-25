@@ -60,12 +60,12 @@ performanceS.prototype.calculate = function (salary) {
 };
 
 var performanceA = function () {};
-performanceS.prototype.calculate = function (salary) {
+performanceA.prototype.calculate = function (salary) {
   return salary * 3;
 };
 
 var performanceB = function () {};
-performanceS.prototype.calculate = function (salary) {
+performanceB.prototype.calculate = function (salary) {
   return salary * 2;
 };
 
